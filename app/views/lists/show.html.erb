@@ -1,11 +1,44 @@
-<h1>show</h1>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
+  <div class="container">
+    <h1><%= @list.name %></h1>
+    <a class="btn btn-flat" href="#">Apply now</a>
+  </div>
+</div>
+
+<div class="container">
+  <%= simple_form_for [@list, @bookmark] do |f|%>
+  <%= f.input :comment %>
+  <%= f.association :movie, as: :select %>
+  <%= f.submit 'Add a bookmark',class: 'btn btn-success' %>
+  <% end %>
+</div>
+
+<div class="cards">
 
 <% @list.bookmarks.all.each do |bookmark|%>
-  <%= bookmark.comment %>
-  <%= bookmark.movie.title %>
-  <%= link_to "Delete bookmark", bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
-<% end %>
+  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+    <div class="card">
+      <div class="image">
+      <%= image_tag bookmark.movie.poster_url, alt: "movie poster", width: 200 %>
+      </div>
+      <div class="title">
+        <h2>
+          <strong>
+          <%= bookmark.movie.title %>
+          </strong>
+        </h2>
+        <span>
+          <%= bookmark.movie.rating %>
+        </span>
+      </div>
+      <div class="content">
+        <%= bookmark.movie.overview %>
+      </div>
+      <div class="footer">
+      <%= bookmark.comment %>
+      <%= link_to "Delete bookmark", bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: 'red'%>
+      </div>
+    </div>
 
-<div>
-<%= link_to 'Add a movie', new_list_bookmark_path(@list) %>
-</div>
+  </div>
+<% end %>
