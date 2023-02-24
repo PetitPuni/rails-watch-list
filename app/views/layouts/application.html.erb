@@ -11,7 +11,7 @@
   </head>
 
   <body>
-    <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
     <%= link_to root_path, class: "navbar-brand" do %>
       <%= image_tag "logo.png" %>
@@ -33,9 +33,14 @@
       </ul>
     </div>
   </div>
+  </div>
+  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= asset_path 'movie-theater.jpg' %>);">
+  <div class="container">
+    <h1>Welcome to <strong>chill movie time</strong> !</h1>
+  </div>
 </div>
 
-
+  </div>
     <%= yield %>
   </body>
 </html>

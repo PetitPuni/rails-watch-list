@@ -1,9 +1,16 @@
-<h1>index</h1>
 
-<%= link_to 'Add a list', new_list_path %>
+<div class="container mt-3" >
 
-<div>
-<% @lists.each do |list| %>
-  <%= link_to list.name, list_path(list) %>
-<% end %>
+  <h2>My list</h2>
+  <%= link_to 'Create a movie list', new_list_path, class: 'btn btn-primary' %>
+
+  <div>
+  <div class="cards">
+    <% @lists.each do |list| %>
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+    <%= link_to list.name, list_path(list) %>
+    </div>
+    <% end %>
+  </div>
 </div>
+
